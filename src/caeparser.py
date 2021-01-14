@@ -1,7 +1,9 @@
+import caetoken, caenodes
+
 class CaeParser:
     def __init__(self, tokens):
         self.tokens = tokens
-        self.current = None
+        self.current: caetoken.CaeToken = None
         self.index = -1
         self.advance()
 
@@ -18,4 +20,4 @@ class CaeParser:
             self.advance()
 
     def expr(self):
-        pass
+        if self.current.type == "INT" or self.current.type = "FLOAT"
