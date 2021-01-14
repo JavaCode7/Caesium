@@ -1,0 +1,7 @@
+public class Vard {
+    int a = 2;
+    str b = "b";
+    bool c = True;
+    float d = 4.7;
+    var z = d - a;
+} 

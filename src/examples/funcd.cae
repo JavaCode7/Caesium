@@ -1,0 +1,5 @@
+!cae-cfg no-static
+
+void func funcd() {
+    console.stdout("funcd");
+}

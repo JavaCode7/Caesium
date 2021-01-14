@@ -1,0 +1,5 @@
+public instance class Hello {
+    public void method main() {
+        console.stdout("Hello World!");
+    }
+}
