@@ -37,7 +37,7 @@ class CaeRules:
         8
     ]
 
-    DEAFULT_PROGRAM_TOKENS = [
+    DEFAULT_PROGRAM_TOKENS = [
         {'NEWLINE': '\n\n'},
         {'KEYWORD': 'public'},
         {'WHITESPACE': ' '},
