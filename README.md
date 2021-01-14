@@ -23,7 +23,7 @@ Ok, so it's not that much of a big deal but I am designing Caesium with one main
 TO-DO:
 * Lexer:
     * Add a load of other characters (@, £, $, %, ~, #...)
-    * Regex expressions
+    * Regex expression Lexing
 
 * Parser
 
