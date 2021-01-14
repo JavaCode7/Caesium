@@ -2,6 +2,7 @@ import caetoken, caenodes
 
 class CaeParser:
     def __init__(self, tokens):
+        self.ast: list = []
         self.tokens: list = tokens
         self.current: caetoken.CaeToken = None
         self.index: int = -1
@@ -16,12 +17,13 @@ class CaeParser:
 
     def parse(self):
         while self.current != "cae-end-of-file":
-            self.exprLevel3()
+            self.ast.append(self.exprLevel5())
             self.advance()
 
     def exprLevel1(self):
         if self.current.type == "INT" or self.current.type == "FLOAT":
             num: float = float(self.current.value)
+            return caenodes.NumberNode(num)
 
     def exprLevel2(self):
         pass
@@ -30,5 +32,8 @@ class CaeParser:
         pass
 
     def exprLevel4(self):
+        pass
+
+    def exprLevel5(self):
         pass
 
