@@ -17,21 +17,29 @@ class CaeParser:
 
     def parse(self):
         while self.current != "cae-end-of-file":
-            self.ast.append(self.exprLevel1())
-            print(self.ast)
+            self.ast.append(self.exprLevel2())
             self.advance()
-
+        if self.ast[len(self.ast) - 1] == None:
+            del self.ast[1]
+    #? Literals
     def exprLevel1(self):
         if self.current.type == "INTEGER" or self.current.type == "FLOAT":
             num: float = float(self.current.value)
+            return caenodes.NumberNode(num)
         elif self.current.type == "MINUS" or self.current.type == "PLUS":
             op: str = self.current.value
             self.advance()
             num: float = float(op + str(self.current.value))
-        return caenodes.NumberNode(num)
-
+            return caenodes.NumberNode(num)
+    #? Parentheses
     def exprLevel2(self):
-        pass
+        if self.current.type == "LPAREN":
+            self.advance()
+            while self.current.type != "RPAREN":
+                return self.exprLevel2()
+            self.advance()
+        else:
+            return self.exprLevel1()
 
     def exprLevel3(self):
         pass
@@ -42,3 +50,5 @@ class CaeParser:
     def exprLevel5(self):
         pass
 
+    def exprLevel6(self):
+        pass

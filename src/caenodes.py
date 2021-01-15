@@ -6,11 +6,6 @@ class BinOpNode:
     def __repr__(self):
         return f'({self.left} {self.op} {self.right})'
 
-class NumberNode:
-    def __init__(self, num):
-        self.num = num
-    def __repr__(self):
-        return f'({self.num})'
 
 class UnOpNode:
     def __init__(self, op, right):
@@ -18,3 +13,10 @@ class UnOpNode:
         self.right = right
     def __repr__(self):
         return f'({self.op} {self.right})'
+
+        
+class NumberNode:
+    def __init__(self, num):
+        self.num = num
+    def __repr__(self):
+        return f'({self.num})'
