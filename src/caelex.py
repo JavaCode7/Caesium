@@ -120,9 +120,6 @@ class CaeLexer:
             #? Divide
             elif self.current == "/":
                 self.tokens.append(caetoken.CaeToken("DIV", "/"))
-            #? Sqrt
-            elif self.current == "¬":
-                self.tokens.append(caetoken.CaeToken("SQRT", "¬"))
             #? Exp
             elif self.current == "^":
                 self.tokens.append(caetoken.CaeToken("POW", "^"))

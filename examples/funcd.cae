@@ -1,5 +1,4 @@
-!cae-cfg no-static
-
-void func funcd() {
-    console.stdout("funcd");
+void func main(param1, param2) {
+    var a = param1 + param2;
+    console.stdout(a);
 }

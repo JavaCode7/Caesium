@@ -1,4 +1,4 @@
-public class Vard {
+void func main() {
     int a = 2;
     str b = "b";
     bool c = True;

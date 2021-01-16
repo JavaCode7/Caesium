@@ -1,5 +1,3 @@
-public instance class Hello {
-    public void method main() {
-        console.stdout("Hello World!");
-    }
+void func main() {
+    console.stdout("Hello")
 }
