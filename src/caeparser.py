@@ -17,7 +17,7 @@ class CaeParser:
 
     def parse(self):
         while self.current != "cae-end-of-file":
-            self.ast.append(self.exprLevel3())
+            self.ast.append(self.exprLevel1())
             self.advance()
         for i in range(len(self.ast) - 1, 0, -1):
             if self.ast[i] == None:
@@ -25,58 +25,30 @@ class CaeParser:
 
     #? Literals
     def exprLevel1(self):
-        if self.current.type == "INTEGER" or self.current.type == "FLOAT":
-            num = self.current
-            return caenodes.NumberNode(num)
-
-        elif self.current.type == "MINUS" or self.current.type == "PLUS":
+        if self.current.type in ("INTEGER", "FLOAT"):
+            return caenodes.NumberNode(str(self.current.value))
+        if self.current.type in ("MINUS", "PLUS"):
             op: str = self.current.value
             self.advance()
-            num: float = float(op + str(self.current.value))
-            return caenodes.NumberNode(num)
+            if self.current.type in ("INTEGER", "FLOAT"):
+                return caenodes.NumberNode(op + str(self.current.value))
+
     #? Parentheses
     def exprLevel2(self):
-        if self.current.type == "LPAREN":
-            self.advance()
-
-            while self.current.type != "RPAREN":
-                return self.exprLevel3()
-            self.advance()
-        else:
-            return self.exprLevel1()
+        pass
 
     #? Exp
     def exprLevel3(self):
-        if self.current.type == "INTEGER" or self.current.type == "FLOAT":
-            left = self.current
-            self.advance()
-            print("step1", self.current)
-            if self.current == "cae-end-of-file":
-                self.advance(-1)
-                return self.exprLevel2()
+        pass
 
-            if self.current.type == "POW":
-                self.advance()
-                print("step2", self.current)
-
-                if self.current.type == "INTEGER" or self.current.type == "FLOAT":
-                    right = self.current
-                    return caenodes.BinOpNode(left, "**", right)
-
-            else:
-                self.advance(-1)
-                print("else2", self.current)
-                return self.exprLevel2()
-
-        else:
-            print("else1", self.current)
-            return self.exprLevel2()
-
+    #? Times/Div
     def exprLevel4(self):
         pass
 
+    #? Plus/Minus
     def exprLevel5(self):
         pass
 
+    #? Base
     def exprLevel6(self):
         pass
