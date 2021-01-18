@@ -17,9 +17,9 @@ class CaeParser:
 
     def parse(self):
         while self.current != "cae-end-of-file":
-            self.ast.append(self.exprLevel1())
+            self.ast.append(self.exprLevel4())
             self.advance()
-        for i in range(len(self.ast) - 1, 0, -1):
+        for i in range(len(self.ast) - 1, -1, -1):
             if self.ast[i] == None:
                 del self.ast[i]
 
@@ -27,7 +27,7 @@ class CaeParser:
     def exprLevel1(self):
         if self.current.type in ("INTEGER", "FLOAT"):
             return caenodes.NumberNode(str(self.current.value))
-        if self.current.type in ("MINUS", "PLUS"):
+        elif self.current.type in ("MINUS", "PLUS"):
             op: str = self.current.value
             self.advance()
             if self.current.type in ("INTEGER", "FLOAT"):
@@ -43,7 +43,27 @@ class CaeParser:
 
     #? Times/Div
     def exprLevel4(self):
-        pass
+        if self.current.type in ("INTEGER", "FLOAT"):
+            print("b")
+            self.advance(2)
+            if self.current == "cae-end-of-file":
+                print("c")
+                self.advance(-2)
+                print("e")
+                return self.exprLevel1()
+            else:
+                print("a")
+                self.advance(-2)
+                print("d")
+                left = self.exprLevel1()
+                if self.current.type in ("MUL", "DIV"):
+                    op = self.current.value
+                    self.advance()
+                    if self.current.type in ("INTEGER", "FLOAT"):
+                        right = self.exprLevel4()
+                        return caenodes.BinOpNode(left, op, right)
+        else:
+            return self.exprLevel1()
 
     #? Plus/Minus
     def exprLevel5(self):
