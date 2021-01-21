@@ -25,7 +25,9 @@ class CaeParser:
 
     #? Literals
     def exprLevel1(self):
+        print("f")
         if self.current.type in ("INTEGER", "FLOAT"):
+            print("g ", self.current.value)
             return caenodes.NumberNode(str(self.current.value))
         elif self.current.type in ("MINUS", "PLUS"):
             op: str = self.current.value
@@ -53,9 +55,10 @@ class CaeParser:
                 return self.exprLevel1()
             else:
                 print("a")
-                self.advance(-2)
+                self.advance(-1)
                 print("d")
                 left = self.exprLevel1()
+                print(left)
                 if self.current.type in ("MUL", "DIV"):
                     op = self.current.value
                     self.advance()
