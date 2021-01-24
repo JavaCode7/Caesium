@@ -6,7 +6,11 @@ try:
 except IndexError:
     print("Welcome to Caesium interactive shell!")
     while True:
-        a = input('> ')
+        try:
+            a = input('> ')
+        except KeyboardInterrupt:
+            print("\n\033[3m KeyboardInterrupt \033[0m")
+            continue
         if a == ".exit":
             break
         elif a == "clear" or a == "cls" or a == "clean":
