@@ -7,6 +7,7 @@ class CaeParser:
         self.current: caetoken.CaeToken = None
         self.index: int = 0
         self.current = self.tokens[self.index]
+        self.signals = {"num": True}
 
     def advance(self, amount: int = 1):
         self.index += amount
@@ -25,6 +26,8 @@ class CaeParser:
 
     #? Literals
     def exprLevel1(self):
+        if not self.signals["num"]:
+            self.advance(-1)
         print("f")
         if self.current.type in ("INTEGER", "FLOAT"):
             print("g ", self.current.value)
@@ -54,11 +57,10 @@ class CaeParser:
                 print("e")
                 return self.exprLevel1()
             else:
-                print("a")
-                self.advance(-1)
-                print("d")
+                self.signals["num"]: bool == False
+                self.advance(-2)
                 left = self.exprLevel1()
-                print(left)
+                self.advance()
                 if self.current.type in ("MUL", "DIV"):
                     op = self.current.value
                     self.advance()
