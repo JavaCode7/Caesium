@@ -60,7 +60,7 @@ class CaeParser:
                     op = self.current.value
                     self.advance()
                     if self.current.type in ("INTEGER", "FLOAT"):
-                        right = self.exprLevel4()
+                        right = self.exprLevel5()
                         return caenodes.BinOpNode(left, op, right)
         else:
             return self.exprLevel1()
@@ -78,7 +78,7 @@ class CaeParser:
             else:
                 self.signals["num"]: bool == False
                 self.advance(-2)
-                left = self.exprLevel4()
+                left = self.exprLevel1()
                 self.advance()
                 if self.current.type in ("PLUS", "MINUS"):
                     op = self.current.value
