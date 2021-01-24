@@ -7,7 +7,7 @@ class CaeParser:
         self.current: caetoken.CaeToken = None
         self.index: int = 0
         self.current = self.tokens[self.index]
-        self.signals = {"num": True}
+        self.signals = {"num": True, "5-4": False}
 
     def advance(self, amount: int = 1):
         self.index += amount
@@ -18,7 +18,7 @@ class CaeParser:
 
     def parse(self):
         while self.current != "cae-end-of-file":
-            self.ast.append(self.exprLevel4())
+            self.ast.append(self.exprLevel5())
             self.advance()
         for i in range(len(self.ast) - 1, -1, -1):
             if self.ast[i] == None:
@@ -28,9 +28,7 @@ class CaeParser:
     def exprLevel1(self):
         if not self.signals["num"]:
             self.advance(-1)
-        print("f")
         if self.current.type in ("INTEGER", "FLOAT"):
-            print("g ", self.current.value)
             return caenodes.NumberNode(str(self.current.value))
         elif self.current.type in ("MINUS", "PLUS"):
             op: str = self.current.value
@@ -49,12 +47,9 @@ class CaeParser:
     #? Times/Div
     def exprLevel4(self):
         if self.current.type in ("INTEGER", "FLOAT"):
-            print("b")
             self.advance(2)
             if self.current == "cae-end-of-file":
-                print("c")
                 self.advance(-2)
-                print("e")
                 return self.exprLevel1()
             else:
                 self.signals["num"]: bool == False
@@ -72,7 +67,25 @@ class CaeParser:
 
     #? Plus/Minus
     def exprLevel5(self):
-        pass
+        if self.current.type in ("INTEGER", "FLOAT"):
+            print("b")
+            self.advance(2)
+            if self.current == "cae-end-of-file":
+                print("c")
+                self.advance(-2)
+                print("e")
+                return self.exprLevel1()
+            else:
+                self.signals["num"]: bool == False
+                self.advance(-2)
+                left = self.exprLevel4()
+                self.advance()
+                if self.current.type in ("PLUS", "MINUS"):
+                    op = self.current.value
+                    self.advance()
+                    if self.current.type in ("INTEGER", "FLOAT"):
+                        right = self.exprLevel5()
+                        return caenodes.BinOpNode(left, op, right)
 
     #? Base
     def exprLevel6(self):
