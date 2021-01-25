@@ -29,7 +29,7 @@ TO-DO:
     * Fix exprlevel4() to accept negative numbers
 
 * Compiler:
-    * Start compiler and actually decide if it should be a compiler of interpreter
+    * Start compiler and actually decide if it should be a compiler or interpreter
 
 * Rules:
     * Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and actually use them somewhere
