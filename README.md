@@ -1,6 +1,14 @@
+<div align="center">
+  <img src="assets/images/Caesium logo.png" />
+  <br/>
+  <br/>
+  <br/>
+</div>
+
+"Finally Python is functional!" <br><br> "Oh, wait..." <br><br> This isn't Python; it's...
+
 Caesium (C##/Cx/C++++++)
 =======
-
 Caesium (pronounced see-zi-um)
 
 NOUN
