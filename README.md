@@ -7,11 +7,15 @@
 
 A: "Finally Python is more functional!"
 <br>
+<br>
 B: "No it's not."
-<br> 
+<br>
+<br>
 A: "Oh, wait..." 
 <br>
+<br>
 B: "Look at the name."
+<br>
 <br>
 A & B: "This isn't Python; it's..."
 
