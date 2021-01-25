@@ -28,8 +28,8 @@ TO-DO:
 * Parser:
     * Fix exprlevel4() to accept negative numbers
 
-* Compiler:
-    * Start compiler and actually decide if it should be a compiler or interpreter
+* Compiler and Interpreter:
+    * Start Interpreter
 
 * Rules:
     * Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and actually use them somewhere
