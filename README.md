@@ -5,7 +5,15 @@
   <br/>
 </div>
 
-"Finally Python is functional!" <br><br> "Oh, wait..." <br><br> This isn't Python; it's...
+A:"Finally Python is more functional!"
+<br>
+B:"No its not."
+<br> 
+A:"Oh, wait..." 
+<br>
+B:"Look at the name."
+<br>
+A&B:"This isn't Python; it's..."
 
 Caesium (C##/Cx/C++++++)
 =======
