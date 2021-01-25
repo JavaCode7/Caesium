@@ -67,25 +67,7 @@ class CaeParser:
 
     #? Plus/Minus
     def exprLevel5(self):
-        if self.current.type in ("INTEGER", "FLOAT"):
-            print("b")
-            self.advance(2)
-            if self.current == "cae-end-of-file":
-                print("c")
-                self.advance(-2)
-                print("e")
-                return self.exprLevel1()
-            else:
-                self.signals["num"]: bool == False
-                self.advance(-2)
-                left = self.exprLevel1()
-                self.advance()
-                if self.current.type in ("PLUS", "MINUS"):
-                    op = self.current.value
-                    self.advance()
-                    if self.current.type in ("INTEGER", "FLOAT"):
-                        right = self.exprLevel5()
-                        return caenodes.BinOpNode(left, op, right)
+        pass
 
     #? Base
     def exprLevel6(self):
