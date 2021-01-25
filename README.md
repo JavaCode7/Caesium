@@ -15,7 +15,7 @@ NOUN
 
 1. The chemical element of atomic number 55, a soft, silvery, extremely reactive metal. It belongs to the alkali metal group and occurs as a trace element in some rocks and minerals.
 
-2. The programming language that mixes Python's readability with C's functionality.
+2. The programming language that mixes Python's readability with C's functionality. The language that made Python functional with Python.
 ------
 
 Caesium is 2 things:
@@ -24,7 +24,7 @@ Caesium is 2 things:
 
 2. My first independent programming language 😀
 
-Ok, so it's not that much of a big deal but I am designing Caesium with one main goal in mind: I am going to use it to make other languages.
+Ok, so it's not that much of a big deal as I am designing Caesium with one main goal in mind: I am going to use it to make other languages.
 
 -----
 
