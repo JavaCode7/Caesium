@@ -25,9 +25,11 @@ TO-DO:
     * Add a load of other characters (@, £, $, %, ~, #...)
     * Regex expression Lexing
 
-* Parser
+* Parser:
+    * Fix exprlevel4() to accept negative numbers
 
-* Compiler
+* Compiler:
+    * Start compiler and actually decide if it should be a compiler of interpreter
 
 * Rules:
     * Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and actually use them somewhere
