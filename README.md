@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="assets/images/Caesium logo.png" />
-  <br/>
-  <br/>
-  <br/>
+  <img src="assets/images/Caesium logo.png" >
+  <br>
+  <br>
+  <br>
 </div>
 
 A: "Finally Python is more functional!"
@@ -46,10 +46,12 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 
 ### Parser
 - [ ] Fix exprlevel4() to accept negative numbers
+- [ ] Add strings and other datatypes
 
 ### Compiler, Interpreter and Builtins
 - [x] Start Interpreter
 - [ ] Start Builtins
+- [ ] Change Interpreter to support Builtins
 
 ### Rules
 - [ ] Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and functional instead of object-oriented and actually use them somewhere
@@ -64,4 +66,5 @@ There are a few repositories that I got the structure from and they are listed h
 <br>
 <br>
 
-- [davidcallanan/py-myopl-code](https://github.com/davidcallanan/py-myopl-code) -- Interpreter and Builtins
+- [davidcallanan/py-myopl-code](https://github.com/davidcallanan/py-myopl-code) -- Interpreter and builtins
+- [nguyenphuminh/Jellyscript](https://github.com/nguyenphuminh/Jellyscript) -- Caesium logo display on readme
