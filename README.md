@@ -19,8 +19,7 @@ B: "Look at the name."
 <br>
 A & B: "This isn't Python; it's..."
 
-Caesium (C##/Cx/C++++++)
-=======
+# Caesium (C##/Cx/C++++++)
 Caesium (pronounced see-zi-um)
 
 NOUN
@@ -40,27 +39,28 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 
 -----
 
-TO-DO:
-* Lexer:
-    - [ ] Add a load of other characters (@, £, $, %, ~, #...)
-    - [ ] Regex expression Lexing
+## TO-DO
+### Lexer
+- [ ] Add a load of other characters (@, £, $, %, ~, #...)
+- [ ] Regex expression Lexing
 
-* Parser:
-    - [ ] Fix exprlevel4() to accept negative numbers
+### Parser
+- [ ] Fix exprlevel4() to accept negative numbers
 
-* Compiler, Interpreter and Builtins:
-    - [x] Start Interpreter
+### Compiler, Interpreter and Builtins
+- [x] Start Interpreter
 
-* Rules:
-    - [ ] Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and actually use them somewhere
+### Rules
+- [ ] Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and actually use them somewhere
 
 Please let me know if you would like to help me with any of this, it would be greatly appreciated.
 
 -----
 
-CREDITS:
-<br>
+## CREDITS
 <br>
 There are a few repositories that I got the structure from and they are listed here.
 <br>
-* [davidcallanan/py-myopl-code](https://github.com/davidcallanan/py-myopl-code) -- Interpreter and Builtins
+<br>
+
+- [davidcallanan/py-myopl-code](https://github.com/davidcallanan/py-myopl-code) -- Interpreter and Builtins
