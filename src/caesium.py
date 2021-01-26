@@ -24,8 +24,6 @@ except IndexError:
 
             parser.parse()
 
-            print(parser.ast[0])
-
             interp = caei.CaeInterpreter()
 
             behavior = interp.visit(parser.ast[0])
