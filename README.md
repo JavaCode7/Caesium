@@ -50,7 +50,7 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 
 ### Compiler, Interpreter and Builtins
 - [x] Start Interpreter
-- [ ] Start Builtins
+- [x] Start Builtins
 - [ ] Change Interpreter to support Builtins
 
 ### Rules

@@ -58,6 +58,24 @@ class ExpectedCharError(LexerError):
     def __repr__(self):
         return f"Expected Char Error at line {self.loc}: "
 
+class InterpError(CaeError):
+
+    def __init__(self, _type, reason: str = "", loc: int = 1):
+        super().__init__(self, reason, loc)
+
+    def __repr__(self):
+        return f"Runtime Error at line {self.loc}: "
+
+class UnsupportedOpError(CaeError):
+
+    def __init__(self, _type, reason: str = "", loc: int = 1):
+        super().__init__(self, reason, loc)
+
+    def __repr__(self):
+        return f"Unsupported Operation Error at line {self.loc}: "
+
+
+
 def throw(_type = CaeError, error: str = "", loc: int = 1):
     to_print: CaeError = _type(error, loc)
     print(f"\033[31m{str(to_print)}\033[0m")
