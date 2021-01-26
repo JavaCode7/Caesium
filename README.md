@@ -51,7 +51,7 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 - [x] Start Interpreter
 
 ### Rules
-- [ ] Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and actually use them somewhere
+- [ ] Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and functional instead of object-oriented and actually use them somewhere
 
 Please let me know if you would like to help me with any of this, it would be greatly appreciated.
 
