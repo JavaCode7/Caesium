@@ -39,7 +39,7 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 
 -----
 
-## TO-DO
+## To-Do
 ### Lexer
 - [ ] Add a load of other characters (@, £, $, %, ~, #...)
 - [ ] Regex expression Lexing
@@ -60,7 +60,7 @@ Please let me know if you would like to help me with any of this, it would be gr
 
 -----
 
-## CREDITS
+## Credits
 <br>
 There are a few repositories that I got the structure from and they are listed here.
 <br>
