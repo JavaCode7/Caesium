@@ -7,7 +7,8 @@ class CaeParser:
         self.current: caetoken.CaeToken = None
         self.index: int = 0
         self.current = self.tokens[self.index]
-        self.signals = {"num": True, "5-4": False}
+        self.signals: dict = {"num": True, "5-4": False}
+        self.highest: function = self.exprLevel4
 
     def advance(self, amount: int = 1):
         self.index += amount
@@ -18,7 +19,7 @@ class CaeParser:
 
     def parse(self):
         while self.current != "cae-end-of-file":
-            self.ast.append(self.exprLevel4())
+            self.ast.append(self.highest())
             self.advance()
         for i in range(len(self.ast) - 1, -1, -1):
             if self.ast[i] == None:
@@ -60,7 +61,7 @@ class CaeParser:
                     op = self.current.value
                     self.advance()
                     if self.current.type in ("INTEGER", "FLOAT"):
-                        right = self.exprLevel4()
+                        right = self.highest()
                         return caenodes.BinOpNode(left, op, right)
         else:
             return self.exprLevel1()

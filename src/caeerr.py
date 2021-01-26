@@ -61,7 +61,9 @@ class ExpectedCharError(LexerError):
 def throw(_type = CaeError, error: str = "", loc: int = 1):
     to_print: CaeError = _type(error, loc)
     print(f"\033[31m{str(to_print)}\033[0m")
+    quit()
 
 def nonterminalthrow(_type = CaeError, _subtype = LexerError, error: str = "", loc: int = 1):
     to_print: CaeError = _type(_subtype, error, loc)
     print(f"\033[31m{str(to_print)}\033[0m")
+    quit()
