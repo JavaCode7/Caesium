@@ -1,16 +1,29 @@
 import caeerr
 
 class Value:
+    
+    def __init__(self, value):
+        self.val = value
 
-    def mul(self):
+    def mul(self, **args):
         caeerr.throw(caeerr.UnsupportedOpError, "Unsupported Operation")
 
-    def div(self):
+    def div(self, **args):
         caeerr.throw(caeerr.UnsupportedOpError, "Unsupported Operation")
 
-    def plus(self):
+    def plus(self, **args):
         caeerr.throw(caeerr.UnsupportedOpError, "Unsupported Operation")
 
-    def minus(self):
+    def minus(self, **args):
         caeerr.throw(caeerr.UnsupportedOpError, "Unsupported Operation")
     
+class Number(Value):
+
+    def __init__(self, num):
+        super().__init__(num)
+
+    def mul(self, right):
+        return self.num * right.num
+    
+    def div(self, right):
+        return self.num / right.num
