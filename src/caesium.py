@@ -1,4 +1,4 @@
-import caelex, sys, os, caeparser
+import caelex, sys, os, caeparser, caei
 
 try:
     with open(str(sys.argv[1])) as fn:
@@ -24,4 +24,10 @@ except IndexError:
 
             parser.parse()
 
-            print(parser.ast)
+            print(parser.ast[0])
+
+            interp = caei.CaeInterpreter()
+
+            behavior = interp.visit(parser.ast[0])
+
+            print(behavior)

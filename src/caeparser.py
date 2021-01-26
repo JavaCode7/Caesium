@@ -18,7 +18,7 @@ class CaeParser:
 
     def parse(self):
         while self.current != "cae-end-of-file":
-            self.ast.append(self.exprLevel5())
+            self.ast.append(self.exprLevel4())
             self.advance()
         for i in range(len(self.ast) - 1, -1, -1):
             if self.ast[i] == None:
@@ -60,7 +60,7 @@ class CaeParser:
                     op = self.current.value
                     self.advance()
                     if self.current.type in ("INTEGER", "FLOAT"):
-                        right = self.exprLevel5()
+                        right = self.exprLevel4()
                         return caenodes.BinOpNode(left, op, right)
         else:
             return self.exprLevel1()
