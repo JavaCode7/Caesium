@@ -8,7 +8,17 @@ class CaeInterpreter:
         return method(node)
     
     def visit_BinOpNode(self, node):
-        return eval(f"{node.left}{node.op}{self.visit(node.right)}")
+        if node.op == "*":
+            return caebuiltins.Float(
+                caebuiltins.Float(node.left.num).mul(caebuiltins.Float(node.right.num))
+            )
+        elif node.op == "/":
+            return caebuiltins.Float(
+                caebuiltins.Float(node.left.num).div(caebuiltins.Float(node.right.num))
+            )
     
     def visit_NumberNode(self, node):
-        return node.num
+        try:
+            return caebuiltins.Int(node.num)
+        except ValueError:
+            return caebuiltins.Float(node.num)

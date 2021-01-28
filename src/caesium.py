@@ -29,3 +29,4 @@ except IndexError:
             behavior = interp.visit(parser.ast[0])
 
             print(behavior)
+            print(type(behavior))

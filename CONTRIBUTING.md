@@ -1,4 +1,4 @@
-# Contibuting
+# Contributing
 
 When contributing make sure to follow these rules:
 
