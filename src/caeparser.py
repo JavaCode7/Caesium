@@ -31,11 +31,6 @@ class CaeParser:
             self.advance(-1)
         if self.current.type in ("INTEGER", "FLOAT"):
             return caenodes.NumberNode(str(self.current.value))
-        elif self.current.type in ("MINUS", "PLUS"):
-            op: str = self.current.value
-            self.advance()
-            if self.current.type in ("INTEGER", "FLOAT"):
-                return caenodes.NumberNode(op + str(self.current.value))
 
     #? Parentheses
     def exprLevel2(self):

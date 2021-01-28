@@ -28,5 +28,7 @@ except IndexError:
 
             behavior = interp.visit(parser.ast[0])
 
+            print(lexed)
+            print(parser.ast)
             print(behavior)
             print(type(behavior))

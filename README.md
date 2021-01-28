@@ -45,7 +45,7 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 - [ ] Regex expression Lexing
 
 ### Parser
-- [ ] Fix exprlevel4() to accept negative numbers
+- [x] Fix exprlevel4() to accept negative numbers
 - [ ] Add strings and other datatypes
 
 ### Compiler, Interpreter and Builtins
