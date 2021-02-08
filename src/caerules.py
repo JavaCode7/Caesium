@@ -3,7 +3,6 @@ class CaeRules:
         "var",
         "public",
         "private",
-        "class",
         "static",
         "int",
         "void",
@@ -28,7 +27,12 @@ class CaeRules:
         "none",
         "null",
         "false",
-        "instance"
+        "instance",
+        "type",
+        "lib",
+        "div",
+        "action",
+        "new"
     ]
 
     INDENT_SIZES = [

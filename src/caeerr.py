@@ -58,6 +58,22 @@ class ExpectedCharError(LexerError):
     def __repr__(self):
         return f"Expected Char Error at line {self.loc}: "
 
+class ParserError(CaeError):
+
+    def __init__(self, _type, reason: str = "", loc: int = 1):
+        super().__init__(self, reason, loc)
+
+    def __repr__(self):
+        return f"Parse Error at line {self.loc}: "
+
+class _SyntaxError(ParserError):
+
+    def __init__(self, reason: str = "", loc: int = 1):
+        super().__init__(self, reason, loc)
+
+    def __repr__(self):
+        return f"Syntax Error at line {self.loc}: "
+
 class InterpError(CaeError):
 
     def __init__(self, _type, reason: str = "", loc: int = 1):
@@ -68,12 +84,20 @@ class InterpError(CaeError):
 
 class UnsupportedOpError(CaeError):
 
-    def __init__(self, _type, reason: str = "", loc: int = 1):
+    def __init__(self, reason: str = "", loc: int = 1):
         super().__init__(self, reason, loc)
 
     def __repr__(self):
         return f"Unsupported Operation Error at line {self.loc}: "
 
+
+class _ZeroDivisionError(InterpError):
+
+    def __init__(self, reason: str = "", loc: int = 1):
+        super().__init__(self, reason, loc)
+
+    def __repr__(self):
+        return f"Zero Division Error at line {self.loc}: "
 
 
 def throw(_type = CaeError, error: str = "", loc: int = 1):

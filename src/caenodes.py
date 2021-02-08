@@ -12,7 +12,7 @@ class BinOpNode:
         self.right = right
     def __repr__(self):
         return f'({self.left} {self.op} {self.right})'
-        
+
 
 class NumberNode(LiteralNode):
     def __init__(self, num):
@@ -20,3 +20,19 @@ class NumberNode(LiteralNode):
         self.num = num
     def __repr__(self):
         return f'({self.num})'
+
+
+class StringNode(LiteralNode):
+    def __init__(self, string):
+        super().__init__(string)
+        self.string = string
+    def __repr__(self):
+        return f'({self.string})'
+
+
+class CharNode(StringNode):
+    def __init__(self, string):
+        super().__init__(string)
+        self.string = string
+    def __repr__(self):
+        return f'({self.string})'

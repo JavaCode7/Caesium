@@ -20,15 +20,17 @@ except IndexError:
 
             lexed = lexer.lex()
 
+            print(lexed)
+
             parser = caeparser.CaeParser(lexed)
 
             parser.parse()
+
+            print(parser.ast)
 
             interp = caei.CaeInterpreter()
 
             behavior = interp.visit(parser.ast[0])
 
-            print(lexed)
-            print(parser.ast)
             print(behavior)
             print(type(behavior))

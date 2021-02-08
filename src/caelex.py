@@ -82,7 +82,7 @@ class CaeLexer:
                 self.advance(-1)
                 self.tokens.append(caetoken.CaeToken("FLOAT", float(num))) if dot_count == 1 else self.tokens.append(caetoken.CaeToken("INTEGER", int(num)))
             #? Identifier/Keyword
-            elif self.current in "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWX":
+            elif self.current in "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
                 ident: str = str(self.current)
                 self.advance()
                 while self.current in "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890":
@@ -90,7 +90,7 @@ class CaeLexer:
                     self.advance()
                 self.tokens.append(caetoken.CaeToken("IDENTIFIER", str(ident))) if str(ident) not in caerules.CaeRules.KEYWORDS else self.tokens.append(caetoken.CaeToken("KEYWORD", str(ident)))
                 self.advance(-1)
-            #? Dot
+            #? Dot/Float
             elif self.current == ".":
                 num: str = "."
                 dot_count = 1
@@ -117,30 +117,50 @@ class CaeLexer:
             #? Rparen
             elif self.current == ")":
                 self.tokens.append(caetoken.CaeToken("RPAREN", ")"))
-            #? Plus
+            #? Plus/Positive
             elif self.current == "+":
-                num: str = "+"
-                dot_count = 0
                 self.advance()
-                while self.current in "1234567890.":
-                    if self.current == ".": dot_count += 1;
-                    if dot_count > 1: caeerr.throw(caeerr.DotError, "Only 1 dot allowed in float", self.loc)
-                    num += self.current
+                if self.current == "+":
                     self.advance()
-                self.advance(-1)
-                self.tokens.append(caetoken.CaeToken("FLOAT", float(num))) if dot_count == 1 else self.tokens.append(caetoken.CaeToken("INTEGER", int(num)))
-            #? Minus
+                    if self.current == "+":
+                        num: str = "+"
+                        dot_count = 0
+                        self.advance()
+                        while self.current in "1234567890.":
+                            if self.current == ".": dot_count += 1;
+                            if dot_count > 1: caeerr.throw(caeerr.DotError, "Only 1 dot allowed in float", self.loc)
+                            num += self.current
+                            self.advance()
+                        self.advance(-1)
+                        self.tokens.append(caetoken.CaeToken("FLOAT", float(num))) if dot_count == 1 else self.tokens.append(caetoken.CaeToken("INTEGER", int(num)))
+                    else:
+                        self.advance(-1)
+                        self.tokens.append(caetoken.CaeToken("PLPL", "++"))
+                else:
+                    self.advance(-1)
+                    self.tokens.append(caetoken.CaeToken("PLUS", "+"))
+            #? Minus/Negative
             elif self.current == "-":
-                num: str = "-"
-                dot_count = 0
                 self.advance()
-                while self.current in "1234567890.":
-                    if self.current == ".": dot_count += 1;
-                    if dot_count > 1: caeerr.throw(caeerr.DotError, "Only 1 dot allowed in float", self.loc)
-                    num += self.current
+                if self.current == "-":
                     self.advance()
-                self.advance(-1)
-                self.tokens.append(caetoken.CaeToken("FLOAT", float(num))) if dot_count == 1 else self.tokens.append(caetoken.CaeToken("INTEGER", int(num)))
+                    if self.current == "-":
+                        num: str = "-"
+                        dot_count = 0
+                        self.advance()
+                        while self.current in "1234567890.":
+                            if self.current == ".": dot_count += 1;
+                            if dot_count > 1: caeerr.throw(caeerr.DotError, "Only 1 dot allowed in float", self.loc)
+                            num += self.current
+                            self.advance()
+                        self.advance(-1)
+                        self.tokens.append(caetoken.CaeToken("FLOAT", float(num))) if dot_count == 1 else self.tokens.append(caetoken.CaeToken("INTEGER", int(num)))
+                    else:
+                        self.advance(-1)
+                        self.tokens.append(caetoken.CaeToken("MIMI", "--"))
+                else:
+                    self.advance(-1)
+                    self.tokens.append(caetoken.CaeToken("MINUS", "-"))
             #? Multiply
             elif self.current == "*":
                 self.tokens.append(caetoken.CaeToken("MUL", "*"))
