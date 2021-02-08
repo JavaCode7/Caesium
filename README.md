@@ -58,6 +58,101 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 
 Please let me know if you would like to help me with any of this, it would be greatly appreciated.
 
+
+## Syntax
+
+### Core syntax
+
+Caesium has many core features of most programming languages and they are mentioned here:
+
+- Print, Input and Error:
+
+  Caesium has features to deal with stdout, stdin and stderr:
+
+      void func main() {
+              console.stdout("Hi");
+              str a = console.stdin("How are you? ");
+              console.stderr(CaeError, "This is an error.");
+      }
+
+- Variable definition:
+
+  Caesium, like most programming languages has statements to add things to memory:
+
+      void func main() {
+              str a = "Hi";
+              int s = 5;
+              float:
+                      x = 2.3
+                      d = 1.4
+                      pi = 3.14
+              list w = [5, 2, 3, 4], q = [];
+      }
+
+### Quirks and extra features
+
+Caesium has a few quirks in its syntax that should be learned even before the first release is out:
+
+- Unary ops -- In Caesium, Unary operators are written in threes:
+
+    In Python
+    
+        print(+2, -2)
+    
+    Caesium equivalent
+
+        void func main(){
+              console.stdout(+++2, ---2);
+        }
+              
+    <p style="color:red"> Both will print positive 2 and negative 2 to the console. <p>
+
+- Object definition -- In Caesium, custom object definitions are simply put as follows:
+
+  In Python
+
+      class Example:
+              def __init__(self):
+                      print("Example")
+      a: Example = Example()
+
+  Caesium Equivalent
+
+      type Example {
+              void method init(self) {
+                      console.stdout("Example");
+              }
+      }
+      void func main() {
+              object a = new Example();
+      }
+
+    <p style="color:red"> Both will print "Example" to the console<p>
+
+- Actions -- Now, I wouldn't really consider this a quirk but it's worth mentioning:
+
+  In Python
+
+      def a(b: int, c: int):
+              print(b+c)
+      def example():
+              a(2, 3)
+      example()
+
+  Caesium Equivalent
+
+      void func a(int b, str c) {
+              console.stdout(b+c);
+      }
+
+      void func main() {
+              action example = new Action(a(b=2, c=3));
+              example();
+      }
+    
+    <p style="color:red"> Both will print positive 5 to the console<p>
+                      
+
 -----
 
 ## Credits
