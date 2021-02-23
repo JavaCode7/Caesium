@@ -12,51 +12,47 @@ class ArgumentParser:
             filename = self.arguments[0]
             if os.path.exists(filename):
                 if not os.path.isfile(filename):
-                    self.throw_error(f"{filename} is not a file")
+                    self.throw_error(f"{filename} is not a file", True)
                 else:
-                    pass
+                    with open(filename, "r") as source_code_reader:
+                        script = source_code_reader.read()
             else:
-                self.throw_error(f"{filename} does not exists")
+                self.throw_error(f"{filename} does not exists", True)
+        else:
+            print("Welcome to Caesium interactive shell")
+            get_console_input = True
 
-    def throw_error(self, error_message):
+            while get_console_input:
+                try:
+                    user_input = str(input(">"))
+                except KeyboardInterrupt:
+                    user_input = " "
+                    self.throw_error("KeyboardInterrupt", False)
+
+                if user_input == ".exit":
+                    get_console_input = False
+                elif user_input == "clear" or user_input == "cls" or user_input == "clean":
+                    os.system("cls" if os.name != "posix" else "clear")
+                else:
+                    lexer = caelex.CaeLexer(user_input)
+                    lexed_tokens = lexer.lex()
+
+                    print(lexed_tokens)
+
+                    parser = caeparser.CaeParser(lexed_tokens)
+                    parser.parse()
+
+                    print(parser.ast)
+
+                    interp = caei.CaeInterpreter()
+                    behavior = interp.visit(parser.ast[0])
+
+                    print(behavior)
+
+    def throw_error(self, error_message, exit):
         print(f"ERROR : {error_message}")
-        sys.exit()
-
-
-# try:
-#     with open(str(sys.argv[1])) as fn:
         
-#         script = fn.read()
-# except IndexError:
-#     print("Welcome to Caesium interactive shell!")
-#     while True:
-#         try:
-#             a = input('> ')
-#         except KeyboardInterrupt:
-#             print("\n\033[3m KeyboardInterrupt \033[0m")
-#             continue
-#         if a == ".exit":
-#             break
-#         elif a == "clear" or a == "cls" or a == "clean":
-#             os.system("cls" if os.name != "posix" else "clear")
-#         else:
-#             lexer = caelex.CaeLexer(a)
+        if exit:sys.exit()
 
-#             lexed = lexer.lex()
-
-#             print(lexed)
-
-#             parser = caeparser.CaeParser(lexed)
-
-#             parser.parse()
-
-#             print(parser.ast)
-
-#             interp = caei.CaeInterpreter()
-
-#             behavior = interp.visit(parser.ast[0])
-
-#             print(behavior)
-#             print(type(behavior))
 if __name__ == '__main__':
     argument_parser = ArgumentParser(sys.argv)
