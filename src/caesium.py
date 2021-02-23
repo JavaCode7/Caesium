@@ -1,7 +1,7 @@
 import caelex, sys, os, caeparser, caei, caeerr
 
 class ArgumentParser:
-    def __init__(self, arguments):
+    def __init__(self, arguments: list):
         self.arguments = arguments[1:]
 
         self.parse_arguments()
@@ -17,40 +17,38 @@ class ArgumentParser:
                     with open(filename, "r") as source_code_reader:
                         script = source_code_reader.read()
             else:
-                self.throw_error(f"{filename} does not exists", True)
+                self.throw_error(f"{filename} does not exist", True)
         else:
             print("Welcome to Caesium interactive shell")
             get_console_input = True
 
             while get_console_input:
                 try:
-                    user_input = str(input(">"))
+                    user_input = str(input("> "))
                 except KeyboardInterrupt:
-                    user_input = " "
                     self.throw_error("KeyboardInterrupt", False)
+                    continue
 
                 if user_input == ".exit":
                     get_console_input = False
                 elif user_input == "clear" or user_input == "cls" or user_input == "clean":
                     os.system("cls" if os.name != "posix" else "clear")
+                elif user_input.rstrip().lstrip() == "":
+                    continue
                 else:
                     lexer = caelex.CaeLexer(user_input)
                     lexed_tokens = lexer.lex()
 
-                    print(lexed_tokens)
-
                     parser = caeparser.CaeParser(lexed_tokens)
                     parser.parse()
-
-                    print(parser.ast)
 
                     interp = caei.CaeInterpreter()
                     behavior = interp.visit(parser.ast[0])
 
                     print(behavior)
 
-    def throw_error(self, error_message, exit):
-        print(f"ERROR : {error_message}")
+    def throw_error(self, error_message: str, exit: bool):
+        print(f"\n{error_message}")
         
         if exit:sys.exit()
 
