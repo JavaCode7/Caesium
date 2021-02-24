@@ -56,7 +56,7 @@ Ok, so it's not that much of a big deal as I am designing Caesium with one main 
 ### Rules
 - [ ] Change DEFAULT_PROGRAM_TOKENS to tokens instead of dictionaries and functional instead of object-oriented and actually use them somewhere
 
-If you will like to help me with any of this, for the repo and submit a pull request! I can always use some help. 😏
+If you will like to help me with any of this, fork the repo and submit a pull request! I can always use some help. 😏
 
 
 ## Syntax
