@@ -19,6 +19,9 @@ B: "Look at the name."
 <br>
 A & B: "This isn't Python; it's..."
 
+### Note
+I am very sorry I haven't been commiting much. I am trying to get the parser done (without a parser tool like bison, sly, nearley etc.) and it isn't an easy task. Any help would be appreciated.
+
 # Caesium (C##/Cx/C++++++)
 Caesium (pronounced see-zi-um)
 
