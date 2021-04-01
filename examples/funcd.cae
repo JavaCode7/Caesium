@@ -1,4 +1,0 @@
-void func main(str param1, str param2) {
-    var a = param1 + param2;
-    console.stdout(a);
-}
