@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div align="center">
   <img src="assets/images/Caesium logo.png" >
   <br>
@@ -166,3 +167,5 @@ There are a few repositories that I got the structure from and they are listed h
 
 - [davidcallanan/py-myopl-code](https://github.com/davidcallanan/py-myopl-code) -- Interpreter and builtins
 - [nguyenphuminh/Jellyscript](https://github.com/nguyenphuminh/Jellyscript) -- Caesium logo display on readme
+=======
+>>>>>>> Stashed changes
