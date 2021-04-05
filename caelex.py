@@ -1,4 +1,5 @@
 from resources.caetoken import Token
+from resources.caedata import keywords
 
 class Lexer:
     def __init__(self, code: str):
@@ -33,5 +34,5 @@ class Lexer:
                 while self.current in "_QWERTYUIOPASDFGHJKLZXCVBNMqwertyuioasdfghjklzxcvbnmp0123456789":
                     ident += self.current
                     self.advance()
-                self.tokens.append(Token("ID", ident))
+                self.tokens.append(Token("ID", ident)) if ident not in keywords else self.tokens.append(Token("KW", ident))
         return self.tokens

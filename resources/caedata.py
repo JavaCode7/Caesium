@@ -1,0 +1,4 @@
+keywords = [
+    "void",
+    "func"
+]
