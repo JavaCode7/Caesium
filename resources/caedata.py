@@ -1,4 +1,4 @@
-keywords = [
+keywords: list = [
     "void",
     "func"
 ]

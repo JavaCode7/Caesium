@@ -1,5 +1,6 @@
 from resources.caetoken import Token
 from resources.caedata import keywords
+from error.caeerr import CaeError
 
 class Lexer:
     def __init__(self, code: str):
@@ -35,4 +36,6 @@ class Lexer:
                     ident += self.current
                     self.advance()
                 self.tokens.append(Token("ID", ident)) if ident not in keywords else self.tokens.append(Token("KW", ident))
+            else:
+                CaeError(f"Illegal Character `{self.current}`").throw()
         return self.tokens
