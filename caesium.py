@@ -5,4 +5,5 @@ while True:
     code = input("> ")
     print(code)
     lexer: caelex.Lexer = caelex.Lexer(code)
-    lexer.lex()
+    tokens: list = lexer.lex()
+    print(tokens)
