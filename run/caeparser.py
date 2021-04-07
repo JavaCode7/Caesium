@@ -8,7 +8,8 @@ class Parser:
         self.current: Token = None
 
     def parse(self):
-        self.func()
+        parsed = self.func()
+        return parsed
 
     def advance(self, amount: int = 1):
         try:

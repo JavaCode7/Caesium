@@ -10,7 +10,9 @@ except:
         print(code)
         lexer: Lexer = Lexer(code)
         tokens: list = lexer.lex()
-        print(tokens)
+        parser: Parser = Parser(tokens)
+        AST = parser.parse()
+        print(AST)
 else:
     code: str = ""
     if os.path.exists(sys.argv[1]) and os.path.isfile(sys.argv[1]):
