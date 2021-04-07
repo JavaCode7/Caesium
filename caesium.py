@@ -1,5 +1,5 @@
 import sys, os
-import caelex
+import caelex, caeparser
 
 try: 
     sys.argv[1]
@@ -18,6 +18,8 @@ else:
         print(code)
         lexer: caelex.Lexer = caelex.Lexer(code)
         tokens: list = lexer.lex()
-        print(tokens)
+        parser: caeparser.Parser = caeparser.Parser(tokens)
+        AST = parser.parse()
+        print(AST)
     else:
         print("Please enter a valid file.")

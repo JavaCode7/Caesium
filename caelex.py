@@ -13,10 +13,10 @@ class Lexer:
 
     def advance(self, amount: int = 1):
         try:
-            self.index += 1
+            self.index += amount
             self.current = self.code[self.index]
         except IndexError:
-            self.index -= 1
+            self.index -= amount
             self.current = "<EOF>"
 
     def lex(self) -> list:
