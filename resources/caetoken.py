@@ -3,7 +3,7 @@ class Token:
         self.type = _type
         self.value = value
 
-    def matches(self, _type: str, value: any):
+    def matches(self, _type: str, value: any) -> bool:
         return self.type == _type and self.value == value
     
     def __repr__(self) -> str:
