@@ -1,5 +1,6 @@
 import sys, os
-import caelex, caeparser
+from run.caelex import Lexer
+from run.caeparser import Parser
 
 try: 
     sys.argv[1]
@@ -7,7 +8,7 @@ except:
     while True:
         code: str = input("> ")
         print(code)
-        lexer: caelex.Lexer = caelex.Lexer(code)
+        lexer: Lexer = Lexer(code)
         tokens: list = lexer.lex()
         print(tokens)
 else:
@@ -16,9 +17,9 @@ else:
         with open(sys.argv[1], "r") as file:
             code = file.read()
         print(code)
-        lexer: caelex.Lexer = caelex.Lexer(code)
+        lexer: Lexer = Lexer(code)
         tokens: list = lexer.lex()
-        parser: caeparser.Parser = caeparser.Parser(tokens)
+        parser: Parser = Parser(tokens)
         AST = parser.parse()
         print(AST)
     else:
