@@ -1,4 +1,5 @@
 from resources.caetoken import Token
+from resources.caenodes import *
 from error.caeerr import CaeError
 
 class Parser:
@@ -7,8 +8,8 @@ class Parser:
         self.index: int = -1
         self.current: Token = None
 
-    def parse(self):
-        parsed = self.func()
+    def parse(self) -> ProgramNode:
+        parsed = self.program()
         return parsed
 
     def advance(self, amount: int = 1):
@@ -19,5 +20,5 @@ class Parser:
             self.index -= amount
             self.current = Token("EOF", "<EOF>")
 
-    def func(self):
+    def program(self) -> ProgramNode:
         pass
