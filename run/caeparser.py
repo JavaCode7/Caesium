@@ -21,4 +21,10 @@ class Parser:
             self.current = Token("EOF", "<EOF>")
 
     def program(self) -> ProgramNode:
+        program: list = []
+        while not self.current.matches("EOF", "<EOF>"):
+            program.append(self.statement())
+        return ProgramNode(program)
+
+    def statement(self):
         pass
