@@ -58,6 +58,9 @@ class Lexer:
             elif self.current == "\n":
                 self.tokens.append(Token("WS", self.current))
                 self.advance()
+            elif self.current == ";":
+                self.tokens.append(Token("SEMI", self.current))
+                self.advance()
             else:
                 CaeError(f"Illegal Character `{self.current}`").throw()
         return self.tokens
